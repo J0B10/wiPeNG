@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class wiPeNG {
 
@@ -21,9 +22,7 @@ public class wiPeNG {
                 executor.submit(new PNGCheck(png));
             }
             executor.shutdown();
-            while (!executor.isTerminated()) {
-                Thread.sleep(100);
-            }
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
             System.out.println("DONE!");
         } catch (Exception e) {
             e.printStackTrace();
