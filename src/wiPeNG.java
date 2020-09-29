@@ -87,8 +87,8 @@ public class wiPeNG {
 
             Color color;
             for (int i = 0; i < step_size; i++) {
-                for (int j = 0; j < pixels.length; j += step_size) {
-                    color = new Color(pixels[j + i], true);
+                for (int j = i; j < pixels.length; j += step_size) {
+                    color = new Color(pixels[j], true);
                     if (color.getAlpha() != 0) return false;
                 }
             }
