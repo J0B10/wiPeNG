@@ -6,5 +6,5 @@ It is optimized for checking and removing thousands of images by utilizing multi
 It was initially created to reduce file sizes of community packages for Microsoft Flight Simulator by removing all empty aerial images.
 
 ## Parameters
-* `--threads`/ `-t` amount of threads to use for execution, change depending on how many threads your cpu has for max speed, default is 2  
+* `--threads`/ `-t` amount of threads to use for execution, if not specified it will use the optimal amount for your system
 * `--dir`/`-d` directory where to look for the png files, default is your current working directory

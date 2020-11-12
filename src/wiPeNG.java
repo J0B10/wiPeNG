@@ -14,8 +14,10 @@ public class wiPeNG {
 
     public static void main(String[] args) {
         try {
-            final int threads = parseParam("threads", 't', args).map(Integer::valueOf).orElse(2);
+            final int cores = Runtime.getRuntime().availableProcessors();
+            final int threads = parseParam("threads", 't', args).map(Integer::valueOf).orElse(cores);
             final File directory = parseParam("dir", 'd', args).map(File::new).orElse(new File("."));
+            System.out.printf("Running with %d threads in '%s'%n", threads, directory);
             final File[] pngs = listAllPNGs(directory);
             final ExecutorService executor = Executors.newFixedThreadPool(threads);
             for (File png : pngs) {
